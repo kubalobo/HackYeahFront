@@ -1,6 +1,6 @@
 <script>
-    import Card from "../components/atom/Card.svelte";
-    import { route } from "../stores/stores";
+    import Card from "../atom/Card.svelte";
+    import { route } from "../../stores/stores";
 </script>
 
 
