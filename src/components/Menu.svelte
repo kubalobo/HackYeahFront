@@ -129,7 +129,7 @@
       brightness(95%) contrast(104%);
   }
 
-  .rotate {
+  img.rotate {
     transform: rotate(-180deg);
   }
 
@@ -147,29 +147,32 @@
     height: 24px;
   }
 
+  img:hover:not(.rotate) {
+    transform: scale(1.1);
+  }
+
+  span:hover {
+    transform: scale(1.05);
+  }
+
   img {
     width: 24px;
-    transition-property: transform;
-    transition-duration: 0.5s;
+    transition: transform;
+    transition-duration: 0.2s;
   }
   span {
-    text-transform: none;
-    color: #ffffff;
+    color: $white;
     font-size: 16px;
+    transition-property: transform;
   }
 
   button {
     border: none;
     background: none;
-    color: #a2b7c4;
-    text-transform: uppercase;
     text-align: left;
     padding: 20px 18px;
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    :hover {
-      transform: scale(1.05);
-    }
   }
 </style>
