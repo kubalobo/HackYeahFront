@@ -19,8 +19,6 @@
         duration: 100,
     };
 
-    let activeIcon = "entites";
-
     let isExpanded = false;
 </script>
 
