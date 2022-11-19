@@ -1,15 +1,16 @@
 <script>
     import { onMount } from "svelte";
     import svelteLogo from "./assets/svelte.svg";
-    import Counter from "./lib/Counter.svelte";
-    import Menu from "./Menu.svelte";
+    import Counter from "./components/Counter.svelte";
+    import Menu from "./components/Menu.svelte";
+    import Router from "./components/Router.svelte";
 </script>
 
 <main>
     <Menu />
 
     <section class="content">
-        <h1>Hello {name}!</h1>
+        <Router />
     </section>
 </main>
 
