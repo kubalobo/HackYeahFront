@@ -39,7 +39,7 @@
             out:fade={fadeOut}
             class:active={$route === "dashboard"}
           >
-            Inbox
+            System statistics
           </span>
         {/if}
       </li>
@@ -53,7 +53,7 @@
             out:fade={fadeOut}
             class:active={$route === "posts"}
           >
-            Starred
+            Posts waterfall
           </span>
         {/if}
       </li>
@@ -71,7 +71,7 @@
             out:fade={fadeOut}
             class:active={$route === "entities"}
           >
-            Entities
+            Supervised entities
           </span>
         {/if}
       </li>
@@ -170,5 +170,8 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
+    :hover {
+      transform: scale(1.05);
+    }
   }
 </style>
