@@ -113,7 +113,6 @@
     height: 100vh;
     transition: ease-out 200ms;
     width: 60px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
