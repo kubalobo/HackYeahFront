@@ -11,7 +11,7 @@
             .get("https://hackyeah-back-xm25a4lxpa-lm.a.run.app/hello/kuba")
             .json();
 
-        backendData.set(json);
+    backendData.set(json);
 
         console.log("Data fetched!");
     });
@@ -28,16 +28,17 @@
 </main>
 
 <style lang="scss">
-    :global(body) {
-        margin: 0;
-        padding: 0;
-    }
-    main {
-        display: flex;
-        color: $primary;
-    }
-    .content {
-        width: 100%;
-        padding: 25px;
-    }
+  :global(body) {
+    margin: 0;
+    padding: 0;
+  }
+  main {
+    display: flex;
+    color: $primary;
+  }
+  .content {
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+  }
 </style>
