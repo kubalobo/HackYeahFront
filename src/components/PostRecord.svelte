@@ -1,5 +1,4 @@
 <script>
-  import searcherIcon from "../assets/icons/searcher.svg";
   import Button from "./atom/Button.svelte";
   import Post from "./Post.svelte";
 
@@ -9,6 +8,7 @@
       name: "Urząd KNF",
       username: "uknf",
       url: "https://twitter.com/uknf",
+      date: "2014-02-04T12:45:21Z",
     },
     localization: "Warszawa, Polska",
     text: " Stała czy zmienna stopa oprocentowania kredytu mieszkaniowego? Zdecyduj świadomie ‼️\n🔸 Zachęcamy do zapoznania się z materiałem informacyjnym przygotowanym przez @uknf!\n🔸 Materiał dostępny jest tutaj: https://t.co/h1qyIHfXjS\\n🔸 Wersja pdf do pobrania: https://t.co/Rnw8FYi0W8 https://t.co/b5gWtmYFNd",
@@ -22,9 +22,15 @@
     },
     scum: {
       image: 0.5,
-      text: 0.7,
-      avg: 0.6,
+      text: 0.8,
+      avg: 0.65,
     },
+  };
+
+  const parseDate = (date) => {
+    let [year, month, day] = date.split("T")[0].split("-");
+    let [h, m, s] = date.split("T")[1].split(":");
+    return `${day}.${month}.${year} ${h}:${m}`;
   };
 </script>
 
@@ -33,33 +39,60 @@
     <Post {data} />
   </div>
   <div class="column">
-    <h1>{data.author.name}</h1>
-    <div>
-      <h2>Localization: {data.localization}</h2>
-      <h2>Verified: Yes</h2>
-      <h2>Number of edits: 0</h2>
-    </div>
-
+    <h1 class="dark">{data.author.name}</h1>
     <div class="row">
-      <h1>Level of suspection - image:</h1>
-      <div class="statNumber one">
-        {data.scum.image}
+      <div class="fullWidth">
+        <h2>Date: {data.author.date && parseDate(data.author.date)}</h2>
+        <h2>Localization: {data.localization}</h2>
+      </div>
+      <div class="fullWidth">
+        <h2>Verified account: Yes</h2>
+        <h2>Number of tweet edits: 0</h2>
       </div>
     </div>
 
-    <div class="row">
-      <h1>Level of suspection - text:</h1>
-      <div class="statNumber one">
-        {data.scum.text}
-      </div>
-    </div>
-
-    <div class="row">
-      <h1>Alghorytm decision:</h1>
-      <div class="column">
-        <div class="statNumber one">
-          {data.scum.avg}
+    <div class="column">
+      <h1 class="dark">Level of suspection</h1>
+      <span class={data.scum.image > 0.5 ? "orange" : "green"}>Image</span>
+      <div class="row">
+        <div class="bar">
+          <div
+            id="myBar"
+            class={data.scum.image > 0.5 ? "orangeBg" : "greenBg"}
+            style="width: {data.scum.image * 100}%"
+          />
         </div>
+        <span class={data.scum.image > 0.5 ? "orange" : "green"}
+          >{data.scum.image * 100}%</span
+        >
+      </div>
+
+      <span class={data.scum.text > 0.5 ? "orange" : "green"}>Text</span>
+      <div class="row">
+        <div class="bar">
+          <div
+            id="myBar"
+            class={data.scum.text > 0.5 ? "orangeBg" : "greenBg"}
+            style="width: {data.scum.text * 100}%"
+          />
+        </div>
+        <span class={data.scum.text > 0.5 ? "orange" : "green"}
+          >{data.scum.text * 100}%</span
+        >
+      </div>
+
+      <h1 class="dark">Alghorithm decision</h1>
+      <div class="row">
+        <div class="bar">
+          <div
+            id="myBar"
+            class="orangeBg"
+            style="width: {data.scum.avg * 100}%"
+          />
+        </div>
+        <span class={data.scum.avg > 0.5 ? "orange" : "green"}
+          >{data.scum.avg * 100}%</span
+        >
       </div>
     </div>
 
@@ -68,6 +101,7 @@
         text="See on Twitter"
         onClick={() => window.open(data.url, "_blank")}
       />
+      <Button text="Send alert" color="orange" />
     </div>
   </div>
 </div>
@@ -80,7 +114,7 @@
     outline: inherit;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
     display: flex;
-    gap: 20px;
+    gap: 30px;
     padding: 20px;
   }
 
@@ -92,21 +126,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 30px;
   }
 
   div.column {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
   }
 
-  .statNumber {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 72px;
-    line-height: 80px;
+  .dark {
+    color: $dark;
+  }
+  .orange {
+    color: $colorThree;
+  }
+  .orangeBg {
+    background-color: $colorThree;
+  }
+  .green {
+    color: $green;
+  }
+  .greenBg {
+    background-color: $green;
   }
 
+  .bar {
+    width: 400px;
+    height: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  #myBar {
+    height: 10px;
+    border-radius: 10px;
+  }
   div.row {
     align-items: center;
     display: flex;
@@ -114,10 +170,15 @@
     gap: 40px;
   }
 
+  .fullWidth {
+    flex: 1;
+  }
+
   div.end {
     display: flex;
     flex: 1;
     align-items: flex-end;
+    justify-content: flex-end;
     gap: 20px;
   }
 </style>
