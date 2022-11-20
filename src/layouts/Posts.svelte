@@ -8,6 +8,8 @@
 
 <div class="records">
   <PostRecord />
+  <PostRecord />
+  <PostRecord />
 </div>
 
 <style lang="scss">
