@@ -2,25 +2,28 @@
   import searcherIcon from "../assets/icons/searcher.svg";
   import Button from "./atom/Button.svelte";
 
-  export let name = "Nazwa instytucji";
+  export let name = "Name";
+  export let location = "Location";
+  export let id = "9999999";
+  export let imgSrc = searcherIcon;
+
 </script>
 
 <div class="record">
   <div class="logo margin">
-    <img src={searcherIcon} alt="logo" />
+    <img src={imgSrc} alt="logo" />
   </div>
   <div class="column margin">
     <h1>{name}</h1>
     <div style="display: flex">
       <div class="column info">
-        <h2>Name: value</h2>
-        <h2>Name: value</h2>
-        <h2>Name: value</h2>
+        <h2>Twitter ID: {id}</h2>
+        <h2>Location: {location}</h2>
       </div>
       <div class="column info">
+        <!-- <h2>Name: value</h2>
         <h2>Name: value</h2>
-        <h2>Name: value</h2>
-        <h2>Name: value</h2>
+        <h2>Name: value</h2> -->
       </div>
     </div>
     <div class="buttons">
