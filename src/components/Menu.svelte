@@ -93,16 +93,22 @@
       </li>
     </button>
   </ul>
-  <button on:click={() => (isExpanded = !isExpanded)}>
-    <li>
-      <img src={arrowsIcon} alt="Entities" class:rotate={isExpanded} />
-      {#if isExpanded}
-        <span in:fade={fadeIn} out:fade={fadeOut} class:active={true}>
-          Collapse menu
-        </span>
-      {/if}
-    </li>
-  </button>
+  <div>
+    {#if isExpanded}
+      <img class="logo" src={"public/uknf.png"} alt="uknf" />
+    {/if}
+    <div class="line" />
+    <button on:click={() => (isExpanded = !isExpanded)}>
+      <li>
+        <img src={arrowsIcon} alt="Entities" class:rotate={isExpanded} />
+        {#if isExpanded}
+          <span in:fade={fadeIn} out:fade={fadeOut} class:active={true}>
+            Collapse menu
+          </span>
+        {/if}
+      </li>
+    </button>
+  </div>
 </nav>
 
 <style lang="scss">
@@ -129,6 +135,10 @@
       brightness(95%) contrast(104%);
   }
 
+  .logo {
+    width: 240px;
+  }
+
   img.rotate {
     transform: rotate(-180deg);
   }
@@ -137,6 +147,12 @@
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+
+  .line {
+    border-top: 1px solid $dark;
+    margin: 0 10px;
+    width: calc(100% - 20px);
   }
 
   li {

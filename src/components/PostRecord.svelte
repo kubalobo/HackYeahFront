@@ -116,6 +116,7 @@
     display: flex;
     gap: 30px;
     padding: 20px;
+    overflow: auto;
   }
 
   div.post {
