@@ -2,24 +2,29 @@
     import { onMount } from "svelte";
     import Menu from "./components/Menu.svelte";
     import Router from "./components/Router.svelte";
-    import ky from 'ky';
-    import {backendData} from './stores/stores'
+    import ky from "ky";
+    import { backendData } from "./stores/stores";
+    import Modal from "svelte-simple-modal";
 
     onMount(async () => {
-        const json = await ky.get('https://hackyeah-back-xm25a4lxpa-lm.a.run.app/hello/kuba').json();
+        const json = await ky
+            .get("https://hackyeah-back-xm25a4lxpa-lm.a.run.app/hello/kuba")
+            .json();
 
         backendData.set(json);
 
         console.log("Data fetched!");
-    })
+    });
 </script>
 
 <main>
-    <Menu />
+    <Modal>
+        <Menu />
 
-    <section class="content">
-        <Router />
-    </section>
+        <section class="content">
+            <Router />
+        </section>
+    </Modal>
 </main>
 
 <style lang="scss">

@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "chart.js": "^4.0.1",
-    "ky": "^0.32.2"
+    "ky": "^0.32.2",
+    "svelte-simple-modal": "^1.4.5",
+    "upload-csv-svelte": "^0.0.4"
   }
 }
