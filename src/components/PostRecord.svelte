@@ -108,16 +108,17 @@
 </div>
 
 <style lang="scss">
-    div.record {
-        border: none;
-        border-radius: 20px;
-        background: $white;
-        outline: inherit;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-        display: flex;
-        gap: 30px;
-        padding: 20px;
-    }
+  div.record {
+    border: none;
+    border-radius: 20px;
+    background: $white;
+    outline: inherit;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    overflow: auto;
+  }
 
     div.post {
         width: 600px;
