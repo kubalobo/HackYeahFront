@@ -4,15 +4,17 @@
     import Posts from "../layouts/Posts.svelte";
     import Dashboard from "../layouts/Dashboard.svelte";
 
+    import { fade } from "svelte/transition";
+
     import { route } from "../stores/stores";
 </script>
 
 {#if $route === "dashboard"}
-    <Dashboard />
+    <div in:fade><Dashboard /></div>
 {:else if $route === "posts"}
-    <Posts />
+    <div in:fade><Posts /></div>
 {:else if $route === "entities"}
-    <Entites />
+    <div in:fade><Entites /></div>
 {:else if $route === "profile"}
-    <Profile />
+    <div in:fade><Profile /></div>
 {/if}

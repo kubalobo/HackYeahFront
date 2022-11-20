@@ -18,12 +18,28 @@
                         data: [53, 43, 73, 42, 61, 34, 75, 82, 61, 55, 66, 69, 58, 72, 95, 64, 62],
                         borderWidth: 3,
                         borderColor: '#3a95e9',
+                        tension: 0.3,
+                        fill: {
+                            target: "+1",
+                            below: "#b0d9ff33",
+                            above: "#b0d9ff33",
+                        },
+                        pointRadius: 0
+
                     },
                     {
                         label: "Fraud",
                         data: [1, 3, 2, 1, 2, 7, 2, 9, 3, 5, 2, 7, 15, 16, 13, 11, 14],
                         borderWidth: 3,
                         borderColor: '#e17141',
+                        tension: 0.3,
+                        fill: {
+                            target: "origin",
+                            below: "#e17141",
+                            above: "#e17141",
+                        },
+                        pointRadius: 0
+                        
                     },
                 ],
             },
