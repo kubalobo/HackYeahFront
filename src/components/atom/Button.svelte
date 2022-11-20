@@ -9,6 +9,7 @@
   on:click={onClick}
   class:orange={color === "orange"}
   class:violet={color === "violet"}
+  class:green={color === "green"}
   class:filter
 >
   {text}
@@ -40,6 +41,10 @@
     background: $colorTwo;
   }
 
+  .green {
+    background: $green;
+  }
+
   .filter {
     background: $white;
     color: $primary;
@@ -56,6 +61,11 @@
     background: $white;
     color: $colorTwo;
     border-color: $colorTwo;
+  }
+  .filter.green {
+    background: $white;
+    color: $green;
+    border-color: $green;
   }
 
   button:hover {

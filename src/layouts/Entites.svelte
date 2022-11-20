@@ -38,12 +38,14 @@
 
     async function loadEntites() {
         const json = await ky
-            .get(
-                "https://hackyeah-back-xm25a4lxpa-lm.a.run.app/get/entities"
-                // { json: { foo: true } }
+            .post(
+                "https://hackyeah-back-xm25a4lxpa-lm.a.run.app/get/entities",
+                { json: { categories: "finfluencer" } }
             )
             .json();
 
+
+            // text: { "$regex": "searchQuery" }
         console.log(json);
 
         visibleEntities = json;
@@ -89,10 +91,7 @@
                         (e) => e !== "companies"
                     );
                 } else {
-                    selectedCategories = [
-                        ...selectedCategories,
-                        "companies",
-                    ];
+                    selectedCategories = [...selectedCategories, "companies"];
                 }
             }}
         />
