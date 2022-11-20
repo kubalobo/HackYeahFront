@@ -18,9 +18,13 @@
   .dashboard {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 90vh;
-    min-width: 900px;
+    min-width: 950px;
     padding: 20px;
+  }
+  .topStats {
+    width: 90%
   }
   .mainChart {
     width: 95%;

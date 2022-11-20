@@ -13,13 +13,13 @@
   <div class="stat">
     <Card>
       <div class="statNumber two">143</div>
-      <div class="statTitle">entities</div>
+      <div class="statTitle">entities observed</div>
     </Card>
   </div>
   <div class="stat">
     <Card>
-      <div class="statNumber three">56</div>
-      <div class="statTitle">threads</div>
+      <div class="statNumber three">70%</div>
+      <div class="statTitle">average efficiency</div>
     </Card>
   </div>
 </div>
