@@ -1,12 +1,26 @@
 <script>
-  import { route } from "../stores/stores";
+  import Searcher from "../components/atom/Searcher.svelte";
+  import EntityRecord from "../components/EntityRecord.svelte";
   import Button from "../components/atom/Button.svelte";
+  import PostRecord from "../components/PostRecord.svelte";
+  import Post from "../components/Post.svelte";
 </script>
 
-Posts
+<div class="records">
+  <PostRecord />
+</div>
 
-<Button text="Go to posts" />
+<style lang="scss">
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
 
-<Button text="Details" />
-
-<Button text="Import" color="orange" />
+  div.records {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+  }
+</style>
