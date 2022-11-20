@@ -21,7 +21,6 @@
     width: fit-content;
     border-radius: 20px;
     border: none;
-    outline: inherit;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 0 20px;
 
