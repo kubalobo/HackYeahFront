@@ -1,9 +1,11 @@
 <script>
   import searcherIcon from "../../assets/icons/searcher.svg";
+  export let searchQuery = 'valueInChild'
+
 </script>
 
 <div>
-  <input />
+  <input bind:value={searchQuery} />
   <img src={searcherIcon} alt="Search" />
 </div>
 

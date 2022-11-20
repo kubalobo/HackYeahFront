@@ -60,7 +60,7 @@
 />
 
 {#if imported}
-    <h1>Success! Data have been sent to the server</h1>
+    <h2>Success! Data have been sent to the server</h2>
 {/if}
 
 <style>

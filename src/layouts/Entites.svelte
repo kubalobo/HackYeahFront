@@ -6,14 +6,42 @@
     import { getContext, onMount } from "svelte";
     import ky from "ky";
     import ImportModal from "../components/ImportModal.svelte";
+    import App from "../App.svelte";
+    import Card from "../components/atom/Card.svelte";
     const { open } = getContext("simple-modal");
     const showModal = () => open(ImportModal);
 
     let visibleEntities;
+    let searchQuery = "";
+    let selectedCategories = [];
+    let categoryQuery = "";
 
-    onMount(async () => {
+    function debounce(callback, wait) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                callback.apply(this, args);
+            }, wait);
+        };
+    }
+
+    window.addEventListener(
+        "keyup",
+        debounce(() => {
+            console.log(searchQuery);
+            loadEntites();
+        }, 1000)
+    );
+
+    $: debounce();
+
+    async function loadEntites() {
         const json = await ky
-            .get("https://hackyeah-back-xm25a4lxpa-lm.a.run.app/get/entities")
+            .get(
+                "https://hackyeah-back-xm25a4lxpa-lm.a.run.app/get/entities"
+                // { json: { foo: true } }
+            )
             .json();
 
         console.log(json);
@@ -21,29 +49,82 @@
         visibleEntities = json;
 
         console.log("Data fetched!");
+    }
+
+    onMount(async () => {
+        loadEntites();
     });
 </script>
 
 <div class="header">
     <div>
-        <Searcher />
+        <Searcher bind:searchQuery />
         <Button color="orange" text="Import" onClick={showModal} />
     </div>
 
     <div class="filters">
-        <Button text="institutions" filter />
-        <Button text="companies" color="violet" filter />
-        <Button text="finfluencers" color="orange" filter />
+        <Button
+            text="institutions"
+            filter={!selectedCategories.includes("institutions")}
+            onClick={() => {
+                if (selectedCategories.includes("institutions")) {
+                    selectedCategories = selectedCategories.filter(
+                        (e) => e !== "institutions"
+                    );
+                } else {
+                    selectedCategories = [
+                        ...selectedCategories,
+                        "institutions",
+                    ];
+                }
+            }}
+        />
+        <Button
+            text="companies"
+            color="violet"
+            filter={!selectedCategories.includes("companies")}
+            onClick={() => {
+                if (selectedCategories.includes("companies")) {
+                    selectedCategories = selectedCategories.filter(
+                        (e) => e !== "companies"
+                    );
+                } else {
+                    selectedCategories = [
+                        ...selectedCategories,
+                        "companies",
+                    ];
+                }
+            }}
+        />
+        <Button
+            text="finfluencers"
+            color="orange"
+            filter={!selectedCategories.includes("finfluencers")}
+            onClick={() => {
+                if (selectedCategories.includes("finfluencers")) {
+                    selectedCategories = selectedCategories.filter(
+                        (e) => e !== "finfluencers"
+                    );
+                } else {
+                    selectedCategories = [
+                        ...selectedCategories,
+                        "finfluencers",
+                    ];
+                }
+            }}
+        />
     </div>
 </div>
 
 {#if visibleEntities}
     <div class="records">
         {#each visibleEntities as entity}
-            <EntityRecord name={entity.name} 
+            <EntityRecord
+                name={entity.name}
                 imgSrc={entity.profile_image_url}
                 id={entity.id}
                 location={entity.location}
+                username={entity.username}
             />
         {/each}
     </div>
