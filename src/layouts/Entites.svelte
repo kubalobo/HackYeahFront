@@ -2,12 +2,17 @@
   import Searcher from "../components/atom/Searcher.svelte";
   import EntityRecord from "../components/EntityRecord.svelte";
   import Button from "../components/atom/Button.svelte";
+
+  import { getContext } from "svelte";
+    import ImportModal from "../components/ImportModal.svelte";
+    const { open } = getContext("simple-modal");
+    const showModal = () => open(ImportModal);
 </script>
 
 <div class="header">
   <div>
     <Searcher />
-    <Button color="orange" text="Import" />
+    <Button color="orange" text="Import" onClick={showModal} />
   </div>
 
   <div class="filters">

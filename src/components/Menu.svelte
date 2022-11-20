@@ -164,6 +164,7 @@
     color: $white;
     font-size: 16px;
     transition-property: transform;
+    transition-duration: 0.2s;
   }
 
   button {
